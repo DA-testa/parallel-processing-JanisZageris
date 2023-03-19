@@ -4,13 +4,13 @@ import heapq
 
 def parallel_processing(n, m, data):
     output = []
-    threads = [(0, i) for i in range(n)]  # Initialize the threads as (free_time, index) tuples
-    heapq.heapify(threads)  # Convert the list to a heap
+    threads = [(0, i) for i in range(n)]
+    heapq.heapify(threads)
 
     for i, t in enumerate(data):
-        free_time, index = heapq.heappop(threads)  # Get the thread with the earliest free time
+        free_time, index = heapq.heappop(threads)
         output.append((index, free_time))
-        heapq.heappush(threads, (free_time + t, index))  # Update the thread's free time with the new job's duration
+        heapq.heappush(threads, (free_time + t, index))
 
     return output
 
